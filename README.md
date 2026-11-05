@@ -4,9 +4,9 @@ This is my personal portfolio website, built as part of my frontend development 
 
 ## About the website
 
-The website has five main sections: Home, About, Skills, Projects and Contact. It includes a timeline of my education, screenshots of my project work and a downloadable copy of my CV.
+The website has five main sections: Home, About, Skills, Projects and Contact. It includes a scroll-driven timeline of my education, screenshots of my project work shown in browser and phone frames, and a downloadable copy of my CV.
 
-Visitors can switch between light and dark themes. The site also has a project screenshot viewer and layouts that adjust to different screen sizes.
+Visitors can switch between light and dark themes. The site also has a project screenshot viewer, a mobile menu and layouts that adjust to different screen sizes.
 
 ## Technologies used
 
@@ -44,10 +44,12 @@ The contact form creates an email draft using the visitor's default email applic
 - `index.html` - Website structure and content
 - `css/style.css` - Styling and responsive layouts
 - `js/script.js` - Theme switching, gallery and form behaviour
-- `assets/` - Images and icons used on the website
+- `assets/` - Images, icons and fonts used on the website
 - `resume/` - Downloadable CV
 
 Icon attribution details are in `assets/icons/CREDITS.txt`.
+
+Fonts are self-hosted in `assets/fonts/`: Fraunces (headings) and Manrope (text), both licensed under the SIL Open Font License 1.1.
 
 ## Author
 

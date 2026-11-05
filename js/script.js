@@ -1,6 +1,13 @@
+/* ==========================================================================
+   Khethukhanyo Mbekeni | Portfolio
+   Theme, navigation, story timeline, screenshot viewer and contact form.
+   ========================================================================== */
+
+// Theme switching
 const themeToggle = document.getElementById('theme-toggle');
 const page = document.documentElement;
 const storageKey = 'km-portfolio-theme';
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
 let savedTheme = null;
 try {
@@ -16,13 +23,28 @@ function setTheme(theme) {
     themeToggle.setAttribute('aria-label', label);
     themeToggle.setAttribute('aria-pressed', String(theme === 'light'));
     themeToggle.title = label;
+    if (themeColorMeta) themeColorMeta.setAttribute('content', theme === 'light' ? '#f3f1ed' : '#09090a');
 }
 
 setTheme(savedTheme === 'light' ? 'light' : 'dark');
 
+function switchTheme(nextTheme) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finish = () => page.classList.remove('theme-switching');
+    page.classList.add('theme-switching');
+
+    if (document.startViewTransition && !reduceMotion) {
+        // The browser cross-fades the old and new page as one picture.
+        document.startViewTransition(() => setTheme(nextTheme)).finished.finally(finish);
+    } else {
+        setTheme(nextTheme);
+        requestAnimationFrame(() => requestAnimationFrame(finish));
+    }
+}
+
 themeToggle.addEventListener('click', () => {
     const nextTheme = page.dataset.theme === 'dark' ? 'light' : 'dark';
-    setTheme(nextTheme);
+    switchTheme(nextTheme);
 
     try {
         localStorage.setItem(storageKey, nextTheme);
@@ -31,17 +53,107 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
-// My Journey toggle
+
+// Header: background appears after scrolling, mobile menu, active section link
+const header = document.getElementById('header');
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+function updateHeader() {
+    header.classList.toggle('is-scrolled', window.scrollY > 12);
+}
+updateHeader();
+window.addEventListener('scroll', updateHeader, { passive: true });
+
+function setMenu(open) {
+    header.classList.toggle('menu-open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+}
+
+menuToggle.addEventListener('click', () => {
+    setMenu(menuToggle.getAttribute('aria-expanded') !== 'true');
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setMenu(false));
+});
+
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && header.classList.contains('menu-open')) {
+        setMenu(false);
+        menuToggle.focus();
+    }
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1000) setMenu(false);
+});
+
+const sectionLinks = new Map();
+navLinks.querySelectorAll('a').forEach(link => {
+    const section = document.querySelector(link.getAttribute('href'));
+    if (section) sectionLinks.set(section, link);
+});
+
+if ('IntersectionObserver' in window) {
+    const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            sectionLinks.forEach(link => {
+                link.classList.remove('is-active');
+                link.removeAttribute('aria-current');
+            });
+            const activeLink = sectionLinks.get(entry.target);
+            activeLink.classList.add('is-active');
+            activeLink.setAttribute('aria-current', 'true');
+        });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+
+    sectionLinks.forEach((link, section) => sectionObserver.observe(section));
+}
+
+
+// My Journey toggle and scroll-driven timeline
 const journeyToggle = document.getElementById('journey-toggle');
 const journeyContent = document.getElementById('journey-content');
 const journeyLabel = journeyToggle.querySelector('.journey-toggle-label');
+const journeyTimeline = document.getElementById('journey-timeline');
+const journeyItems = Array.from(journeyTimeline.querySelectorAll('.journey-item'));
+
+function updateJourneyProgress() {
+    if (journeyContent.getAttribute('aria-hidden') === 'true') return;
+
+    const rect = journeyTimeline.getBoundingClientRect();
+    if (rect.height === 0) return;
+
+    // The gold line fills down to a point about 60% of the way down the screen.
+    const marker = window.innerHeight * 0.6;
+    const progress = Math.min(1, Math.max(0, (marker - rect.top) / rect.height));
+    journeyTimeline.style.setProperty('--progress', progress.toFixed(4));
+
+    journeyItems.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        item.classList.toggle('is-reached', itemTop < marker);
+    });
+}
+
+window.addEventListener('scroll', updateJourneyProgress, { passive: true });
+window.addEventListener('resize', updateJourneyProgress);
 
 journeyToggle.addEventListener('click', () => {
     const isOpen = journeyToggle.getAttribute('aria-expanded') === 'true';
     journeyToggle.setAttribute('aria-expanded', String(!isOpen));
     journeyContent.setAttribute('aria-hidden', String(isOpen));
     journeyContent.inert = isOpen;
-    journeyLabel.textContent = isOpen ? 'Read My Story' : 'Close My Story';
+    journeyLabel.textContent = isOpen ? 'Read my story' : 'Close my story';
+
+    // Keep the timeline in sync while the panel animates open.
+    const started = performance.now();
+    (function follow(now) {
+        updateJourneyProgress();
+        if (now - started < 800) requestAnimationFrame(follow);
+    })(started);
 });
 
 

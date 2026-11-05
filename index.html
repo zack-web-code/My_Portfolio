@@ -3,19 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal portfolio of Khethukhanyo Mbekeni, a Frontend Developer and Business Information Technology student.">
+    <meta name="description" content="Personal portfolio of Khethukhanyo Mbekeni, a Frontend Developer and Business Information Technology student at the University of Johannesburg.">
+    <meta name="theme-color" content="#09090a">
+    <meta property="og:title" content="Khethukhanyo Mbekeni | Portfolio">
+    <meta property="og:description" content="Frontend Developer and Business Information Technology student in Johannesburg, South Africa.">
+    <meta property="og:type" content="website">
     <title>Khethukhanyo Mbekeni | Portfolio</title>
+    <link rel="icon" type="image/png" href="assets/images/my_logo.png">
+    <link rel="preload" href="assets/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        /* Apply the saved theme before the page paints, so there is no flash. */
+        try {
+            if (localStorage.getItem('km-portfolio-theme') === 'light') {
+                document.documentElement.dataset.theme = 'light';
+            }
+        } catch (e) {}
+    </script>
     <script src="js/script.js" defer></script>
 </head>
 <body>
-    <header class="header">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="header" id="header">
         <nav class="navbar" aria-label="Main navigation">
             <a href="#home" class="logo" aria-label="Go to Home">
-                <img src="assets/images/my_logo.png" alt="KM logo">
+                <img src="assets/images/my_logo.png" alt="KM logo" width="56" height="56">
             </a>
 
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -37,61 +54,88 @@
                     </svg>
                 </button>
                 <a class="cv-button" href="resume/Khethukhanyo_Mbekeni_CV.pdf" download="Khethukhanyo_Mbekeni_CV.pdf" type="application/pdf" aria-label="Download Khethukhanyo Mbekeni CV as PDF">Download CV</a>
+                <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu"
+                        aria-expanded="false" aria-controls="nav-links">
+                    <span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main id="main">
+        <!-- Hero -->
         <section id="home" class="hero">
-            <div class="hero-content">
-                <p class="hero-intro">Hello, I'm</p>
-                <h1>Khethukhanyo <span>Mbekeni.</span></h1>
-                <h2>Frontend Developer &amp; BIT Student</h2>
-                <p class="hero-description">
-                    I'm a Business Information Technology student at the University of Johannesburg,
-                    passionate about creating modern, responsive and user-friendly digital experiences.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            <!-- Portrait: a full-bleed background layer with a progressive blur toward the text -->
+            <figure class="hero-photo">
+                <img src="assets/images/my_photo.png" alt="Black and white portrait of Khethukhanyo Mbekeni"
+                     width="1086" height="1448" fetchpriority="high">
+                <div class="hero-blur" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="hero-fade" aria-hidden="true"></div>
+            </figure>
+
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 class="hero-in" style="--i:0">Khethukhanyo Mbekeni</h1>
+                    <p class="hero-role hero-in" style="--i:1">Aspiring Business Analyst &amp; Frontend Developer</p>
+                    <p class="hero-description hero-in" style="--i:2">
+                        Driven by curiosity, creativity, and a passion for solving real problems. I believe meaningful solutions begin with understanding people, not just technology.
+                    </p>
+                    <div class="hero-buttons hero-in" style="--i:3">
+                        <a href="#projects" class="btn btn-primary">View my work</a>
+                        <a href="#contact" class="btn btn-secondary">Contact me</a>
+                    </div>
+                    <div class="hero-socials hero-in" style="--i:4" aria-label="Social links">
+                        <a href="https://github.com/zack-web-code" target="_blank" rel="noopener noreferrer"
+                           aria-label="GitHub profile" title="GitHub">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M9 19c-4.3 1.4-4.3-2.5-6-3"></path>
+                                <path d="M9 22v-3.87a3.37 3.37 0 0 0-.94-2.61C4.92 15.17 1.62 13.98 1.62 8.56a5.44 5.44 0 0 1 1.5-3.78 5.07 5.07 0 0 1 .09-3.77S4.39.68 7.12 2.51a13.38 13.38 0 0 1 9.76 0C19.61.68 20.79 1.01 20.79 1.01a5.07 5.07 0 0 1 .09 3.77 5.44 5.44 0 0 1 1.5 3.78c0 5.42-3.3 6.61-6.44 6.96a3.37 3.37 0 0 0-.94 2.61V22"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/khethukhanyo-mbekeni-57aa9134a" target="_blank"
+                           rel="noopener noreferrer" aria-label="LinkedIn profile" title="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                <path d="M8 10v7m0-10h.01M12 17v-7h3a2 2 0 0 1 2 2v5"></path>
+                            </svg>
+                        </a>
+                        <a href="mailto:khethukhanyom@gmail.com" aria-label="Send an email" title="Email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                <path d="m22 6-10 7L2 6"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <div class="hero-socials" aria-label="Social links">
-                    <a href="https://github.com/zack-web-code" target="_blank" rel="noopener noreferrer"
-                       aria-label="GitHub profile" title="GitHub">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M9 19c-4.3 1.4-4.3-2.5-6-3"></path>
-                            <path d="M9 22v-3.87a3.37 3.37 0 0 0-.94-2.61C4.92 15.17 1.62 13.98 1.62 8.56a5.44 5.44 0 0 1 1.5-3.78 5.07 5.07 0 0 1 .09-3.77S4.39.68 7.12 2.51a13.38 13.38 0 0 1 9.76 0C19.61.68 20.79 1.01 20.79 1.01a5.07 5.07 0 0 1 .09 3.77 5.44 5.44 0 0 1 1.5 3.78c0 5.42-3.3 6.61-6.44 6.96a3.37 3.37 0 0 0-.94 2.61V22"></path>
-                        </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/khethukhanyo-mbekeni-57aa9134a" target="_blank"
-                       rel="noopener noreferrer" aria-label="LinkedIn profile" title="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                            <path d="M8 10v7m0-10h.01M12 17v-7h3a2 2 0 0 1 2 2v5"></path>
-                        </svg>
-                    </a>
-                    <a href="mailto:khethukhanyom@gmail.com" aria-label="Send an email" title="Email">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                            <path d="m22 6-10 7L2 6"></path>
-                        </svg>
-                    </a>
+
+            </div>
+
+            <dl class="hero-facts hero-in" style="--i:5">
+                <div>
+                    <dt>Studying</dt>
+                    <dd>Business Information Technology at the University of Johannesburg</dd>
                 </div>
-            </div>
-            <div class="hero-photo" aria-hidden="true">
-                <img src="assets/images/my_photo.png" alt="">
-            </div>
+                <div>
+                    <dt>Projects</dt>
+                    <dd>Trade Grid and MechanIQ, built with a team as a frontend developer</dd>
+                </div>
+                <div>
+                    <dt>Interested in</dt>
+                    <dd>Frontend development, business analysis and practical digital solutions</dd>
+                </div>
+            </dl>
         </section>
+
         <!-- About -->
         <section id="about" class="section about-section">
-            <div class="about-container">
+            <div class="container">
                 <div class="about-grid">
+                    <h2 class="section-title">About me</h2>
                     <div class="about-copy">
-                        <h2>About Me</h2>
-                        <p>
+                        <p class="lead">
                             I'm a Business Information Technology student at the
                             University of Johannesburg, with a strong interest in
                             frontend development, business analysis and creating
@@ -110,13 +154,17 @@
                             effectively and improve people's everyday experiences.
                         </p>
                     </div>
+                </div>
 
-                    <aside class="about-focus" aria-labelledby="focus-heading">
-                        <h3 id="focus-heading">Beyond Writing Code</h3>
-                        <p>
+                <aside class="about-focus" aria-labelledby="focus-heading">
+                    <div class="about-focus-lead">
+                        <h3 id="focus-heading">Beyond writing code</h3>
+                        <p class="focus-statement">
                             I believe the most valuable solutions begin with
                             understanding the problem.
                         </p>
+                    </div>
+                    <div class="about-focus-body">
                         <p>
                             My interest in technology goes beyond building websites
                             and applications. I'm interested in understanding how
@@ -129,142 +177,148 @@
                             I can, I want to understand why it needs to exist and what
                             value it will provide.
                         </p>
-                    </aside>
-                </div>
+                    </div>
+                </aside>
 
-                <div class="journey-intro">
-                    <h3>My Journey</h3>
-                    <p class="journey-tagline">
-                        Every journey has its turning points. Mine taught me that
-                        progress isn't always a straight line.
-                    </p>
-                    <p class="journey-summary">
-                        My educational journey has been filled with challenges,
-                        difficult decisions and opportunities to start again. What
-                        began as a struggle to find direction eventually became a
-                        journey of personal growth, determination and academic achievement.
-                    </p>
+                <div class="journey">
+                    <div class="journey-intro">
+                        <div class="journey-intro-lead">
+                            <h3>My journey</h3>
+                            <p class="journey-tagline">
+                                Every journey has its turning points. Mine taught me that
+                                progress isn't always a straight line.
+                            </p>
+                        </div>
+                        <div class="journey-intro-body">
+                            <p class="journey-summary">
+                                My educational journey has been filled with challenges,
+                                difficult decisions and opportunities to start again. What
+                                began as a struggle to find direction eventually became a
+                                journey of personal growth, determination and academic achievement.
+                            </p>
+                            <button
+                                class="journey-toggle"
+                                id="journey-toggle"
+                                type="button"
+                                aria-expanded="false"
+                                aria-controls="journey-content"
+                            >
+                                <span class="journey-toggle-label">Read my story</span>
+                                <svg class="journey-chevron" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" aria-hidden="true">
+                                    <path d="m6 9 6 6 6-6"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
 
-                    <button
-                        class="journey-toggle"
-                        id="journey-toggle"
-                        type="button"
-                        aria-expanded="false"
-                        aria-controls="journey-content"
-                    >
-                        <span class="journey-toggle-label">Read My Story</span>
-                        <svg class="journey-chevron" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" aria-hidden="true">
-                            <path d="m6 9 6 6 6-6"></path>
-                        </svg>
-                    </button>
-                </div>
-
-                <div class="journey-content" id="journey-content" aria-hidden="true" inert>
-                    <div class="journey-content-inner">
-                        <ol class="journey-timeline">
-                            <li class="journey-item">
-                                <span class="journey-date">Kokstad</span>
-                                <h4>Where It Began</h4>
-                                <p>
-                                    My high school journey started at Carl Malcomess
-                                    High School in KwaZulu-Natal. During this period, I
-                                    struggled academically because I hadn't yet developed
-                                    a clear vision for my education.
-                                </p>
-                            </li>
-                            <li class="journey-item">
-                                <span class="journey-date">2018</span>
-                                <h4>A New Beginning in Durban</h4>
-                                <p>
-                                    Following my grandmother's encouragement, I moved
-                                    to Wentworth, Durban, where I repeated Grade 10 at
-                                    Fairvale. Unfortunately, I experienced another
-                                    academic setback.
-                                </p>
-                            </li>
-                            <li class="journey-item">
-                                <span class="journey-date">2019</span>
-                                <h4>A Year Away</h4>
-                                <p>
-                                    I took a gap year, stepping away from formal education.
-                                </p>
-                            </li>
-                            <li class="journey-item">
-                                <span class="journey-date">2020–2021</span>
-                                <h4>Johannesburg</h4>
-                                <p>
-                                    I enrolled at Destiny Charter Schools, where I studied
-                                    Commerce and successfully passed Grade 10. However,
-                                    I left school again during Grade 11 in 2021 because
-                                    I still hadn't discovered my purpose.
-                                </p>
-                            </li>
-                            <li class="journey-item">
-                                <span class="journey-date">2022</span>
-                                <h4>Another Year Away</h4>
-                                <p>
-                                    I remained out of school, still searching for direction
-                                    and a clearer sense of purpose.
-                                </p>
-                            </li>
-                            <li class="journey-item journey-milestone">
-                                <span class="journey-date">2023</span>
-                                <h4>The Turning Point</h4>
-                                <p>
-                                    Encouraged by my mother, I returned to school at
-                                    Mangwazana High School in Obonjeni, KwaZulu-Natal,
-                                    where I enrolled in Grade 11. This time, I approached
-                                    education with a different mindset, greater determination
-                                    and a renewed sense of purpose. It marked the beginning
-                                    of a significant transformation in my life.
-                                </p>
-                            </li>
-                            <li class="journey-item journey-milestone">
-                                <span class="journey-date">2024</span>
-                                <h4>The Achievement</h4>
-                                <p>
-                                    I completed Grade 12 at Mangwazana High School,
-                                    achieving <strong>six distinctions and finishing as
-                                    the school's top-performing student</strong>. This
-                                    achievement represented more than academic success.
-                                    It was proof of how far I had come through perseverance,
-                                    personal growth and a change in mindset.
-                                </p>
-                            </li>
-                            <li class="journey-item">
-                                <span class="journey-date">2025–Present</span>
-                                <h4>University of Johannesburg</h4>
-                                <p>
-                                    Today, I'm studying towards a Diploma in Business
-                                    Information Technology at my dream university,
-                                    pursuing a field I've developed a genuine passion for.
-                                </p>
-                            </li>
-                        </ol>
-                        <blockquote class="journey-quote">
-                            My journey has taught me that your past does not have to
-                            define your future. What matters is your willingness to
-                            grow, change and keep moving forward.
-                        </blockquote>
+                    <div class="journey-content" id="journey-content" aria-hidden="true" inert>
+                        <div class="journey-content-inner">
+                            <ol class="journey-timeline" id="journey-timeline">
+                                <li class="journey-item">
+                                    <span class="journey-date">Kokstad</span>
+                                    <h4>Where it began</h4>
+                                    <p>
+                                        My high school journey started at Carl Malcomess
+                                        High School in KwaZulu-Natal. During this period, I
+                                        struggled academically because I hadn't yet developed
+                                        a clear vision for my education.
+                                    </p>
+                                </li>
+                                <li class="journey-item">
+                                    <span class="journey-date">2018</span>
+                                    <h4>A new beginning in Durban</h4>
+                                    <p>
+                                        Following my grandmother's encouragement, I moved
+                                        to Wentworth, Durban, where I repeated Grade 10 at
+                                        Fairvale. Unfortunately, I experienced another
+                                        academic setback.
+                                    </p>
+                                </li>
+                                <li class="journey-item">
+                                    <span class="journey-date">2019</span>
+                                    <h4>A year away</h4>
+                                    <p>
+                                        I took a gap year, stepping away from formal education.
+                                    </p>
+                                </li>
+                                <li class="journey-item">
+                                    <span class="journey-date">2020–2021</span>
+                                    <h4>Johannesburg</h4>
+                                    <p>
+                                        I enrolled at Destiny Charter Schools, where I studied
+                                        Commerce and successfully passed Grade 10. However,
+                                        I left school again during Grade 11 in 2021 because
+                                        I still hadn't discovered my purpose.
+                                    </p>
+                                </li>
+                                <li class="journey-item">
+                                    <span class="journey-date">2022</span>
+                                    <h4>Another year away</h4>
+                                    <p>
+                                        I remained out of school, still searching for direction
+                                        and a clearer sense of purpose.
+                                    </p>
+                                </li>
+                                <li class="journey-item journey-milestone">
+                                    <span class="journey-date">2023</span>
+                                    <h4>The turning point</h4>
+                                    <p>
+                                        Encouraged by my mother, I returned to school at
+                                        Mangwazana High School in Obonjeni, KwaZulu-Natal,
+                                        where I enrolled in Grade 11. This time, I approached
+                                        education with a different mindset, greater determination
+                                        and a renewed sense of purpose. It marked the beginning
+                                        of a significant transformation in my life.
+                                    </p>
+                                </li>
+                                <li class="journey-item journey-milestone">
+                                    <span class="journey-date">2024</span>
+                                    <h4>The achievement</h4>
+                                    <p>
+                                        I completed Grade 12 at Mangwazana High School,
+                                        achieving <strong>six distinctions and finishing as
+                                        the school's top-performing student</strong>. This
+                                        achievement represented more than academic success.
+                                        It was proof of how far I had come through perseverance,
+                                        personal growth and a change in mindset.
+                                    </p>
+                                </li>
+                                <li class="journey-item journey-milestone">
+                                    <span class="journey-date">2025–Present</span>
+                                    <h4>University of Johannesburg</h4>
+                                    <p>
+                                        Today, I'm studying towards a Diploma in Business
+                                        Information Technology at my dream university,
+                                        pursuing a field I've developed a genuine passion for.
+                                    </p>
+                                </li>
+                            </ol>
+                            <blockquote class="journey-quote">
+                                My journey has taught me that your past does not have to
+                                define your future. What matters is your willingness to
+                                grow, change and keep moving forward.
+                            </blockquote>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
         <!-- Skills -->
         <section id="skills" class="section skills-section">
-            <div class="skills-container">
-                <div class="skills-heading">
-                    <h2>My Skills</h2>
-                    <p>
+            <div class="container">
+                <div class="section-heading">
+                    <h2 class="section-title">My skills</h2>
+                    <p class="section-intro">
                         The technologies and tools I've worked with while learning,
                         designing and building software projects.
                     </p>
                 </div>
 
                 <div class="skills-grid">
-                    <article class="skills-card">
+                    <article class="skills-card skills-card-main">
                         <div class="skills-card-heading">
                             <div class="skills-category-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -275,17 +329,17 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3>Frontend Development</h3>
+                                <h3>Frontend development</h3>
                                 <p>Creating responsive user interfaces.</p>
                             </div>
                         </div>
 
-                        <ul class="skills-list" aria-label="Frontend Development technologies">
-                            <li><img class="skill-logo" src="assets/icons/html5.svg" alt="" width="22" height="22" loading="lazy"><span>HTML5</span></li>
-                            <li><img class="skill-logo" src="assets/icons/css3.svg" alt="" width="22" height="22" loading="lazy"><span>CSS3</span></li>
-                            <li><img class="skill-logo" src="assets/icons/javascript.svg" alt="" width="22" height="22" loading="lazy"><span>JavaScript</span></li>
-                            <li><img class="skill-logo" src="assets/icons/react.svg" alt="" width="22" height="22" loading="lazy"><span>React</span></li>
-                            <li><img class="skill-logo" src="assets/icons/react-native.svg" alt="" width="22" height="22" loading="lazy"><span>React Native</span></li>
+                        <ul class="skills-list skills-list-large" aria-label="Frontend Development technologies">
+                            <li><img class="skill-logo" src="assets/icons/html5.svg" alt="" width="32" height="32" loading="lazy"><span>HTML5</span></li>
+                            <li><img class="skill-logo" src="assets/icons/css3.svg" alt="" width="32" height="32" loading="lazy"><span>CSS3</span></li>
+                            <li><img class="skill-logo" src="assets/icons/javascript.svg" alt="" width="32" height="32" loading="lazy"><span>JavaScript</span></li>
+                            <li><img class="skill-logo" src="assets/icons/react.svg" alt="" width="32" height="32" loading="lazy"><span>React</span></li>
+                            <li><img class="skill-logo" src="assets/icons/react-native.svg" alt="" width="32" height="32" loading="lazy"><span>React Native</span></li>
                         </ul>
                     </article>
 
@@ -300,14 +354,14 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3>Database Technologies</h3>
+                                <h3>Database technologies</h3>
                                 <p>Working with relational data.</p>
                             </div>
                         </div>
 
                         <ul class="skills-list" aria-label="Database technologies">
-                            <li><img class="skill-logo" src="assets/icons/sql.svg" alt="" width="22" height="22" loading="lazy"><span>SQL</span></li>
-                            <li><img class="skill-logo" src="assets/icons/sql-server.svg" alt="" width="22" height="22" loading="lazy"><span>Microsoft SQL Server</span></li>
+                            <li><img class="skill-logo" src="assets/icons/sql.svg" alt="" width="24" height="24" loading="lazy"><span>SQL</span></li>
+                            <li><img class="skill-logo" src="assets/icons/sql-server.svg" alt="" width="24" height="24" loading="lazy"><span>Microsoft SQL Server</span></li>
                         </ul>
                     </article>
 
@@ -317,131 +371,132 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                      stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M4 7h16M4 17h16"></path>
-                                    <circle cx="9" cy="7" r="2.5" fill="var(--background)" stroke="currentColor"></circle>
-                                    <circle cx="16" cy="17" r="2.5" fill="var(--background)" stroke="currentColor"></circle>
+                                    <circle cx="9" cy="7" r="2.5" fill="var(--surface)" stroke="currentColor"></circle>
+                                    <circle cx="16" cy="17" r="2.5" fill="var(--surface)" stroke="currentColor"></circle>
                                 </svg>
                             </div>
                             <div>
-                                <h3>Development &amp; Design Tools</h3>
+                                <h3>Development &amp; design tools</h3>
                                 <p>Planning, designing and delivering work.</p>
                             </div>
                         </div>
 
                         <ul class="skills-list" aria-label="Development and design tools">
-                            <li><img class="skill-logo" src="assets/icons/git.svg" alt="" width="22" height="22" loading="lazy"><span>Git</span></li>
-                            <li><img class="skill-logo skill-logo-github" src="assets/icons/github.svg" alt="" width="22" height="22" loading="lazy"><span>GitHub</span></li>
-                            <li><img class="skill-logo" src="assets/icons/vscode.svg" alt="" width="22" height="22" loading="lazy"><span>VS Code</span></li>
-                            <li><img class="skill-logo" src="assets/icons/figma.svg" alt="" width="22" height="22" loading="lazy"><span>Figma</span></li>
-                            <li><img class="skill-logo" src="assets/icons/powerbi.svg" alt="" width="22" height="22" loading="lazy"><span>Power BI</span></li>
+                            <li><img class="skill-logo" src="assets/icons/git.svg" alt="" width="24" height="24" loading="lazy"><span>Git</span></li>
+                            <li><img class="skill-logo skill-logo-github" src="assets/icons/github.svg" alt="" width="24" height="24" loading="lazy"><span>GitHub</span></li>
+                            <li><img class="skill-logo" src="assets/icons/vscode.svg" alt="" width="24" height="24" loading="lazy"><span>VS Code</span></li>
+                            <li><img class="skill-logo" src="assets/icons/figma.svg" alt="" width="24" height="24" loading="lazy"><span>Figma</span></li>
+                            <li><img class="skill-logo" src="assets/icons/powerbi.svg" alt="" width="24" height="24" loading="lazy"><span>Power BI</span></li>
                         </ul>
                     </article>
                 </div>
             </div>
         </section>
+
         <!-- Projects -->
         <section id="projects" class="section projects-section">
-            <div class="projects-container">
-                <div class="projects-heading">
-                    <h2>Featured Projects</h2>
-                    <p>A selection of the collaborative software projects I have contributed to, focused on creating useful and responsive experiences.</p>
+            <div class="container">
+                <div class="section-heading">
+                    <h2 class="section-title">Featured projects</h2>
+                    <p class="section-intro">A selection of the collaborative software projects I have contributed to, focused on creating useful and responsive experiences.</p>
                 </div>
 
-                <div class="projects-grid">
+                <div class="projects-list">
                     <!-- Trade Grid -->
-                    <article class="project-card" aria-labelledby="tradegrid-title">
-                        <div class="project-card-top">
-                            <div>
-                                <p class="project-kind">Web application</p>
-                                <h3 id="tradegrid-title">Trade Grid</h3>
-                            </div>
-                            <span class="project-status project-status-done">Completed</span>
+                    <article class="project project-web" aria-labelledby="tradegrid-title">
+                        <div class="project-media">
+                            <button class="browser-frame" type="button"
+                                    data-gallery="tradegrid" data-index="0"
+                                    aria-label="Enlarge Trade Grid website screenshot">
+                                <span class="browser-bar" aria-hidden="true">
+                                    <span class="browser-dots"><i></i><i></i><i></i></span>
+                                    <span class="browser-url">tradegrid-32ip.onrender.com</span>
+                                </span>
+                                <img src="assets/images/projects/trade-grid/home.png"
+                                     alt="Trade Grid homepage showing its global importer and exporter matching platform"
+                                     width="1897" height="883" loading="lazy">
+                                <span class="media-hint">View screenshot</span>
+                            </button>
                         </div>
 
-                        <button class="project-image project-image-web" type="button"
-                                data-gallery="tradegrid" data-index="0"
-                                aria-label="Enlarge Trade Grid website screenshot">
-                            <img src="assets/images/projects/trade-grid/home.png"
-                                 alt="Trade Grid homepage showing its global importer and exporter matching platform"
-                                 loading="lazy">
-                            <span class="project-image-hint">View screenshot</span>
-                        </button>
-                        <p class="project-media-label">Trade Grid — Homepage</p>
-
-                        <div class="project-details">
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <p class="project-kind">Web application</p>
+                                <span class="project-status project-status-done">Completed</span>
+                            </div>
+                            <h3 id="tradegrid-title">Trade Grid</h3>
                             <p class="project-description">
                                 Trade Grid is a web platform for connecting importers and exporters,
                                 helping businesses discover potential trading partners and explore international markets.
                             </p>
                             <p class="project-role"><strong>My contribution:</strong> Frontend team member, working on the user interface and responsive layouts.</p>
                             <div class="project-tags" aria-label="Project focus areas">
-                                <span>Web UI</span><span>Responsive Design</span><span>Team Project</span>
+                                <span>Web UI</span><span>Responsive design</span><span>Team project</span>
                             </div>
-                        </div>
-
-                        <div class="project-actions">
-                            <a class="project-action project-action-primary"
-                               href="https://tradegrid-32ip.onrender.com"
-                               target="_blank" rel="noopener noreferrer">
-                                Live Website
-                            </a>
-                            <a class="project-action project-action-secondary"
-                               href="https://github.com/dswcodex-cmd/TradeGrid.git"
-                               target="_blank" rel="noopener noreferrer">
-                                GitHub
-                            </a>
+                            <div class="project-actions">
+                                <a class="project-action project-action-primary"
+                                   href="https://tradegrid-32ip.onrender.com"
+                                   target="_blank" rel="noopener noreferrer">
+                                    Live website
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+                                </a>
+                                <a class="project-action project-action-secondary"
+                                   href="https://github.com/dswcodex-cmd/TradeGrid.git"
+                                   target="_blank" rel="noopener noreferrer">
+                                    GitHub
+                                </a>
+                            </div>
                         </div>
                     </article>
 
                     <!-- MechanIQ -->
-                    <article class="project-card" aria-labelledby="mechaniq-title">
-                        <div class="project-card-top">
-                            <div>
-                                <p class="project-kind">Mobile application</p>
-                                <h3 id="mechaniq-title">MechanIQ</h3>
+                    <article class="project project-mobile" aria-labelledby="mechaniq-title">
+                        <div class="project-media">
+                            <div class="phones" aria-label="MechanIQ app screenshots">
+                                <button class="phone" type="button"
+                                        data-gallery="mechaniq" data-index="0"
+                                        aria-label="Enlarge MechanIQ login screen">
+                                    <img src="assets/images/projects/mechaniq/login.png"
+                                         alt="MechanIQ mobile login screen" width="946" height="2048" loading="lazy">
+                                </button>
+                                <button class="phone" type="button"
+                                        data-gallery="mechaniq" data-index="1"
+                                        aria-label="Enlarge MechanIQ customer dashboard">
+                                    <img src="assets/images/projects/mechaniq/customer-dashboard.png"
+                                         alt="MechanIQ customer dashboard with vehicle and service quick actions" width="946" height="2048" loading="lazy">
+                                </button>
+                                <button class="phone" type="button"
+                                        data-gallery="mechaniq" data-index="2"
+                                        aria-label="Enlarge MechanIQ mechanic dashboard">
+                                    <img src="assets/images/projects/mechaniq/mechanic-dashboard.png"
+                                         alt="MechanIQ mechanic dashboard showing overview cards and service actions" width="946" height="2048" loading="lazy">
+                                </button>
                             </div>
-                            <span class="project-status project-status-progress">In development</span>
+                            <p class="media-hint media-hint-static">Select a screen to enlarge</p>
                         </div>
 
-                        <div class="project-mobile-gallery" aria-label="MechanIQ app screenshots">
-                            <button class="project-mobile-shot" type="button"
-                                    data-gallery="mechaniq" data-index="0"
-                                    aria-label="Enlarge MechanIQ login screen">
-                                <img src="assets/images/projects/mechaniq/login.png"
-                                     alt="MechanIQ mobile login screen" loading="lazy">
-                            </button>
-                            <button class="project-mobile-shot" type="button"
-                                    data-gallery="mechaniq" data-index="1"
-                                    aria-label="Enlarge MechanIQ customer dashboard">
-                                <img src="assets/images/projects/mechaniq/customer-dashboard.png"
-                                     alt="MechanIQ customer dashboard with vehicle and service quick actions" loading="lazy">
-                            </button>
-                            <button class="project-mobile-shot" type="button"
-                                    data-gallery="mechaniq" data-index="2"
-                                    aria-label="Enlarge MechanIQ mechanic dashboard">
-                                <img src="assets/images/projects/mechaniq/mechanic-dashboard.png"
-                                     alt="MechanIQ mechanic dashboard showing overview cards and service actions" loading="lazy">
-                            </button>
-                        </div>
-                        <p class="project-media-label">Login · Customer Dashboard · Mechanic Dashboard — Click to enlarge</p>
-
-                        <div class="project-details">
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <p class="project-kind">Mobile application</p>
+                                <span class="project-status project-status-progress">In development</span>
+                            </div>
+                            <h3 id="mechaniq-title">MechanIQ</h3>
                             <p class="project-description">
                                 MechanIQ is a mobile vehicle-assistance application designed around diagnostics,
                                 service requests, finding mechanics, and fuel support for drivers.
                             </p>
                             <p class="project-role"><strong>My contribution:</strong> Frontend team member, helping build and adapt the customer and mechanic interfaces.</p>
                             <div class="project-tags" aria-label="Project focus areas">
-                                <span>React Native</span><span>Mobile UI</span><span>Team Project</span>
+                                <span>React Native</span><span>Mobile UI</span><span>Team project</span>
                             </div>
-                        </div>
-
-                        <div class="project-actions">
-                            <span class="project-action project-action-unavailable" aria-label="MechanIQ demo is not yet public">
-                                Demo coming soon
-                            </span>
-                            <span class="project-action project-action-unavailable" aria-label="MechanIQ repository is not yet public">
-                                Repository coming soon
-                            </span>
+                            <div class="project-actions">
+                                <span class="project-action project-action-unavailable" aria-label="MechanIQ demo is not yet public">
+                                    Demo coming soon
+                                </span>
+                                <span class="project-action project-action-unavailable" aria-label="MechanIQ repository is not yet public">
+                                    Repository coming soon
+                                </span>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -466,12 +521,13 @@
                 <p class="project-lightbox-caption" id="project-lightbox-caption"></p>
             </div>
         </dialog>
+
         <!-- Contact -->
         <section id="contact" class="section contact-section">
-            <div class="contact-container">
-                <div class="contact-heading">
-                    <h2>Get In Touch</h2>
-                    <p>Have a project in mind, an opportunity to collaborate, or a problem worth solving? I'd love to hear about it.</p>
+            <div class="container">
+                <div class="section-heading">
+                    <h2 class="section-title">Get in touch</h2>
+                    <p class="section-intro">Have a project in mind, an opportunity to collaborate, or a problem worth solving? I'd love to hear about it.</p>
                 </div>
 
                 <div class="contact-grid">
@@ -572,6 +628,12 @@
             </div>
         </section>
     </main>
-    <footer class="footer"><p>&copy; 2026 Khethukhanyo Mbekeni. All rights reserved.</p></footer>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 Khethukhanyo Mbekeni. All rights reserved.</p>
+            <a href="#home" class="footer-top">Back to top</a>
+        </div>
+    </footer>
 </body>
 </html>
