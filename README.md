@@ -1,60 +1,52 @@
 # Personal Portfolio
 
-This is my personal portfolio website, built as part of my frontend development internship at CodeAlpha. I use it to share my background, technical skills and projects I've worked on.
+My personal portfolio is a place to share what I build, the skills I am developing, and the projects I have worked on. It is designed to be simple to navigate, responsive, and easy to use on both desktop and mobile.
 
-## About the website
+**Live website:** https://khethukhanyo.netlify.app  
+**Repository:** https://github.com/zack-web-code/My_Portfolio
 
-The website has five main sections: Home, About, Skills, Projects and Contact. It includes a scroll-driven timeline of my education, screenshots of my project work shown in browser and phone frames, and a downloadable copy of my CV.
+## Features
 
-Visitors can switch between light and dark themes. The site also has a project screenshot viewer, a mobile menu and layouts that adjust to different screen sizes.
+- Home, About, Skills, Projects, and Contact sections
+- A personal journey timeline
+- Project previews with screenshots and an image viewer
+- Dark and light themes
+- Responsive navigation and layouts
+- Downloadable CV
+- A contact form that opens an email draft in the visitor's email application
 
-## Technologies used
+## Featured projects
+
+**Trade Grid** — A platform designed to help importers and exporters connect. I contributed to the frontend interface, styling, and responsive layouts.  
+Website: https://tradegrid-32ip.onrender.com
+
+**MechanIQ** — A vehicle-assistance application. I worked on customer and mechanic interfaces, including login and dashboard screens.
+
+## Built with
 
 - HTML5
 - CSS3
 - JavaScript
-- Git and GitHub
 
-## Projects featured
-
-### Trade Grid
-
-A web platform designed to help importers and exporters connect. I worked with the frontend team on the interface, styling and responsive layouts.
-
-Website: https://tradegrid-32ip.onrender.com
-
-### MechanIQ
-
-A mobile vehicle-assistance application. My work has focused on customer and mechanic screens, including login and dashboard interfaces.
-
-## Running the website locally
+## Run locally
 
 1. Clone or download this repository.
-2. Open the project folder in VS Code or another editor.
-3. Open `index.html` in a browser. You can also use the Live Server extension in VS Code.
+2. Open the project folder in VS Code.
+3. Open `index.html` in a browser, or start it using the Live Server extension.
 
-The website uses plain HTML, CSS and JavaScript, so there are no packages to install.
+No package installation or build step is required.
 
-## Contact form
+## Project structure
 
-The contact form creates an email draft using the visitor's default email application. It does not send messages directly from the website; the visitor needs to send the email themselves.
+- `index.html` — Page content and structure
+- `css/style.css` — Styling, themes, and responsive layouts
+- `js/script.js` — Navigation and interactive features
+- `assets/` — Images, icons, and locally hosted fonts
+- `resume/` — Downloadable CV
 
-## Project files
-
-- `index.html` - Website structure and content
-- `css/style.css` - Styling and responsive layouts
-- `js/script.js` - Theme switching, gallery and form behaviour
-- `assets/` - Images, icons and fonts used on the website
-- `resume/` - Downloadable CV
-
-Icon attribution details are in `assets/icons/CREDITS.txt`.
-
-Fonts are self-hosted in `assets/fonts/`: Fraunces (headings) and Manrope (text), both licensed under the SIL Open Font License 1.1.
+The contact form prepares an email; visitors still need to send it from their email application. Icon attributions are listed in `assets/icons/CREDITS.txt`. The site's fonts, Fraunces and Manrope, are distributed under the SIL Open Font License 1.1.
 
 ## Author
 
-Khethukhanyo Mbekeni
-
-GitHub: https://github.com/zack-web-code
-
-LinkedIn: https://www.linkedin.com/in/khethukhanyo-mbekeni-57aa9134a
+Khethukhanyo Mbekeni  
+[GitHub](https://github.com/zack-web-code) · [LinkedIn](https://www.linkedin.com/in/khethukhanyo-mbekeni-57aa9134a)
